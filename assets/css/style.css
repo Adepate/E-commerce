@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 .nav-buttons{
-    margin-left: 60%;
+    margin-left: 50%;
 }
 *{
     margin: 0;
@@ -37,6 +37,10 @@ h5{
 h6{
    color: #d8d8d8;
 }
+.logo{
+    width: 40px;
+    height: 40px;
+}
 button{
     font-size: 0.8rem;
     font-weight: 900;
@@ -59,7 +63,9 @@ button:hover{
     padding-bottom: 2rem !important;
     top: 0;
     left: 0;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1 );
 }
+
 .navbar-light
 .navbar-nav
 .nav-link{
@@ -80,6 +86,11 @@ button:hover{
      
     cursor: pointer;
     margin-left: 5px;
+}
+.navbar .brand{
+    color: coral;
+    margin: 3px 5px;
+    font-size: 1.5rem;
 }
 
 @media only screen and (max-width:990px){
@@ -189,7 +200,7 @@ hr{
     height: 4px !important;
     opacity: 1 !important;
     background-color: #fb774b;
-   margin-left: 547px;
+  
 }
 .star{
     padding: 10px 0;
@@ -200,7 +211,7 @@ hr{
 }
 
 #banner{
-    background-image: url(../imgs/background4.jpg);
+    background-image: url(../imgs/background5.jpg);
     width: 100%;
     height: 60vh;
     background-size: cover;
@@ -221,4 +232,269 @@ hr{
 }
 #banner button:hover{
     background-color: black;
+}
+footer{
+    background-color: black;
+}
+footer h5{
+    columns: #d8d8d8;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+footer li{
+    padding-bottom: 4px;
+}
+footer li a{
+    font-size: 0.8rem;
+    color: #999;
+    text-decoration:none ;
+}
+footer  li a:hover{
+    color: #d8d8d8;
+}
+footer .copyright a{
+    color: black;
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    display: inline-block;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 38px;
+    transition: 0.3s ease;
+    margin: 0 5px;
+}
+footer .copyright a:hover{
+    color: white;
+    background-color: #fb774b;
+}
+footer p{
+    color: #fff;
+}
+footer .copyright img{
+    width: 50%;
+    height: 50%;
+}
+
+.small-img-group{
+    display: flex;
+    justify-content: space-between;
+}
+.small-img-col{
+    flex-basis: 24%;
+    cursor: pointer;
+}
+
+
+/*single product details info*/
+.single-product input{
+    width:50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+.single-product input:focus{
+    outline: none;
+
+}
+.single-product .buy-btn{
+    background-color: #fb774b;
+    opacity: 1;
+    transition: 0.4s all;
+}
+.single-product .buy-btn:hover{
+    background-color: #222222;
+}
+
+
+/*Cart*/
+
+.cart table{
+    width: 100%;
+    border-collapse: collapse;
+
+}
+.cart .product-info{
+    display: flex;
+    flex-wrap: wrap;
+}
+.cart th{
+    text-align:left;
+    padding: 5px 10px;
+    color: white;
+    background-color: #fb774b;
+
+}
+.cart td{
+    padding: 10px 20px;
+}
+.cart td img{
+    width: 80px;
+    height:80px;
+    margin-right:10px;
+}
+.cart td input{
+    width:40px;
+    height: 30px;
+    padding: 5px;
+}
+.cart td a{
+    color: #fb774b;
+}
+.cart .remove-btn{
+    color: #fb774b;
+    text-decoration: none;
+}
+.cart .edit-btn{
+    color: #fb774b;
+    text-decoration: none;
+    font-size: 15px;
+}
+.cart .product-info p{
+    margin: 3px;
+}
+
+.cart-total{
+    display: flex;
+    justify-content: flex-end;
+}
+.cart-total table{
+    width:100%;
+    max-width: 500px;
+    border-top:3px solid #fb774b;
+}
+td:last-child{
+    text-align: right;
+}
+th:last-child{
+    text-align: right;
+}
+.checkout-btn{
+    display: flex;
+    justify-content: flex-end;
+    background-color: #fb774b;
+    color: #fff;
+}
+.checkout-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+/*Login*/
+#login-form{
+    width: 50%;
+    margin: 5px auto;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #fb774b;
+}
+#login-form input{
+    width: 50%;
+    margin: 5px auto;
+
+}
+#login-form #login-btn{
+    background-color: #fb774b;
+    color: white;
+}
+#login-form #register-url{
+    color: #fb774b;
+}
+
+
+/*Register*/
+#register-form{
+    width: 50%;
+    margin: 5px auto;
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid #fb774b;
+}
+#register-form input{
+    width: 50%;
+    margin: 5px auto;
+
+}
+#register-form #register-btn{
+    background-color: #fb774b;
+    color: white;
+}
+#register-form #login-url{
+    color: #fb774b;
+}
+
+
+/*account */
+
+#account-form{
+    width: 50%;
+    margin: 35px auto;
+    text-align: center;
+    padding: 20px;
+}
+#account-form input{
+    margin: 5px auto;
+}
+#account-form #change-pass-btn{
+    color: white;
+    background-color: #fb774b;
+}
+
+.account-info #orders-btn,#logout-btn{
+    color: #fb774b;
+    text-decoration: none;
+}
+
+/*orders*/
+.orders table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.orders .product-info{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.orders th{
+    text-align: left;
+    padding: 5px 20px;
+    color: #fb774b;
+}
+
+.orders th:nth-child(2){
+    text-align: right;
+}
+.orders td{
+    padding: 10px 20px;
+}
+.orders td img{
+    width: 80px;
+    height: 80px;
+    margin-right: 10px;
+}
+
+
+/*check out*/
+#checkout-form .checkout-small-element{
+    display: inline-block;
+    width: 48%;
+    margin: 10px auto;
+}
+#checkout-form .checkout-large-element{
+    width: 96%;
+}
+#checkout-form .checkout-btn-container{
+    margin: 10px;
+    text-align: right;
+    margin-right: 40px;
+}
+#checkout-form #checkout-btn{
+    color: white;
+    background-color: #fb774b;
+}
+
+/*contact*/
+#contact span{
+    color: #fb774b;
 }
