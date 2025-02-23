@@ -1,3 +1,26 @@
+<?php
+
+include('server/connection.php');
+//to get the product_id from database 
+if(isset($_GET['product_id'])){
+
+    $product_id = $_GET['product_id'];
+
+    $stmt = $conn->prepare("SELECT * FROM products WHERE product_id = ?");
+    $stmt->bind_param("i",$product_id);
+    $stmt->execute();
+    
+    $product = $stmt->get_result();
+
+//no product id given
+} else {
+  header('location:index.php');
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,10 +49,10 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
              
               <li class="nav-item">
-                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="index.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="shop.html">Shop</a>
+                <a class="nav-link" href="shop.php">Shop</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Blog</a>
@@ -51,38 +74,52 @@
       <!--single product-->
       <section class="container single-product my-5 pt-5">
         <div class="row mt-5">
+
+        <?php while($row = $product->fetch_assoc()){ ?>
+
+    
+
           <div class="col-lg-5 col-md-6 col-sm-12">
-            <img class="img-fluid w-100 pb-1" src="assets/imgs/feature3.jpg" id="mainImg">
+            <img class="img-fluid w-100 pb-1" src="assets/imgs/<?php echo $row['product_image']; ?>" id="mainImg">
             <div class="small-img-group">
               <div class="small-img-col">
-                <img src="assets/imgs/shoe2.jpg" width="100%" class="small-img" alt="">
+                <img src="assets/imgs/<?php echo $row['product_image']; ?>" width="100%" class="small-img" alt="">
               </div>
               <div class="small-img-col">
-                <img src="assets/imgs/watch4.jpg" width="100%" class="small-img" alt="">
+                <img src="assets/imgs/<?php echo $row['product_image2']; ?>" width="100%" class="small-img" alt="">
               </div>
               <div class="small-img-col">
-                <img src="assets/imgs/shoe5.jpg" width="100%" class="small-img" alt="">
+                <img src="assets/imgs/<?php echo $row['product_image3']; ?>" width="100%" class="small-img" alt="">
               </div>
               <div class="small-img-col">
-                <img src="assets/imgs/cloth2.jpg" width="100%" class="small-img" alt="">
+                <img src="assets/imgs/<?php echo $row['product_image4']; ?>" width="100%" class="small-img" alt="">
               </div>
             </div>
           </div>
+         
+
 
             <div class="col-lg-6 col-md-12 col-12">
               <h6>Men/Shoe</h6>
-              <h3 class="py-4">Men's Fashion</h3>
-              <h2>#23000</h2>
-              <input type="number" value="1">
-              <button class="buy-btn">Add T Cart</button>
-              <h4 class="mt-5 mb-5">Product details</h4>
-              <span>The details of this [product will be displayed later
-                details of this [product will be displayed later
-                details of this [product will be displayed later
-                details of this [product will be displayed later
-              </span>
-            </div>
+              <h3 class="py-4"><?php echo $row['product_name']; ?></h3>
+              <h2>#<?php echo $row['product_price']; ?></h2>
 
+        <form method="POST" action="cart.php">
+            <input type="hidden" name="product_id" value="<?php echo $row['product_id']; ?>" />
+            <input type="hidden" name="product_image" value="<?php echo $row['product_image']; ?>" />
+            <input type="hidden" name="product_name" value="<?php echo $row['product_name']; ?> "/>
+            <input type="hidden" name="product_price" value="<?php echo $row['product_price']; ?> "/>
+
+             <input type="number" name="product_quantity" value="1">
+            <button class="buy-btn" type="submit" name="add_to_cart">Add To Cart</button>
+        </form>
+
+              <h4 class="mt-5 mb-5">Product details</h4>
+              <span><?php echo $row['product_description']; ?> </span>
+            </div>
+        
+
+            <?php } ?>
 
             </div>
       </section>
