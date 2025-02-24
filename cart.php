@@ -9,6 +9,8 @@ if(isset($_POST['add_to_cart'])){
 
         $products_array_ids = array_column($_SESSION['cart'],"product_id");
         if( !in_array($_POST['product_id'], $products_array_ids)){
+
+            $product_id = $_POST['product_id'];
      
             $product_array = array(
                                  'product_id' => $_POST['product_id'],
@@ -46,7 +48,28 @@ if(isset($_POST['add_to_cart'])){
 
     }
 
-} else {
+//remove product from crt
+} elseif(isset($_POST['remove_product'])){
+
+    $product_id = $_POST['product_id'];
+
+    unset($_SESSION['cart'][$product_id]);
+
+} elseif(isset($_POST['edit_quantity'])){
+
+    //get id and quantity from form
+    $product_id = $_POST['product_id'];
+    $product_quantity = $_POST['product_quantity'];
+
+    //get the product arry from the session
+    $product_array = $_SESSION['cart']['product_id'];
+    //update product quntity
+    $product_array['product_quantity'] = $product_quantity;
+    //return array back to its place
+    $_SESSION['cart'][$product_id] = $product_array;
+
+}
+else {
     header('location: index.php');
 }
 ?>
@@ -92,7 +115,7 @@ if(isset($_POST['add_to_cart'])){
                 <a class="nav-link" href="contact.html">Contact us</a>
               </li>
               <li class="nav-item">
-                <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i> </a>
+                <a href="cart.php"><i class="fa-solid fa-bag-shopping"></i> </a>
                 <a href="account.html"><i class="fa-solid fa-user"></i> </a>
 
               </li>
@@ -120,23 +143,34 @@ if(isset($_POST['add_to_cart'])){
                 <tr>
                     <td>
                         <div class="product-info">
-                            <img src="assets/imgs/<?php echo $value['product_image']; ?>" >
+                            <img src="assets/imgs/<?php echo $value['product_image']; ?>"/>
                             <div>
                                 <p><?php echo $value['product_name']; ?></p>
-                                <small><span>#</span><?php echo $value['product_price']; ?></small> <br>
-                                <a href="#" class="remove-btn">Remove</a>
+                                <small><span>&#8358;</span><?php echo $value['product_price']; ?></small>
+                                 <br>
+
+                        <form method="POST" action="cart.php" >
+                            <input type="hidden" name="product_id" value="<?php echo $value['product_id']; ?>">
+                            <input type="submit"  class="remove-btn" name="remove_product" value="remove">
+                                 </form>
                             </div>
                         </div>
                     </td>
 
                     <td>
-                        <input type="number" value="<?php echo $value['product_quantity']; ?>"/>
-                        <a class="edit-btn" href="#">Edit</a>
+
+                       <form method="POST" action="cart.php" >
+                        <input type="hidden" name="product_id" value="<?php echo $value['product_id']; ?>">
+                        <input type="number"  value="<?php echo $value['product_quantity']; ?>"/>
+
+                        <input type ="submit" class="edit-btn" value="edit" name="edit_quantity">
+
+                       </form>
                     </td>
 
                     <td>
-                        <span>#</span>
-                        <span class="product-price">3000</span>
+                        <span>&#8358;</span>
+                        <span class="product-price">4000</span>
                     </td>
                 </tr>
                 <?php }  ?>
@@ -146,11 +180,11 @@ if(isset($_POST['add_to_cart'])){
             <table>
                 <tr>
                     <td>Subtotal</td>
-                    <td>#9000</td>
+                    <td>&#8358;9000</td>
                 </tr>
                 <tr>
                     <td> Total</td>
-                    <td>#10000</td>
+                    <td>&#8358;10000</td>
                 </tr>
             </table>
            </div>
