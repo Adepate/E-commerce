@@ -12,7 +12,7 @@ if(isset($_GET['product_id'])){
     
     $product = $stmt->get_result();
 
-    iiii
+    
 //no product id given
 } else {
   header('location:index.php');
