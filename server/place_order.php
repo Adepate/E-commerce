@@ -24,28 +24,39 @@ if(isset($_POST['place_order'])){
     $stmt->execute();
 
 
-    //get order id
+    //get order id       // 3  issue new order and store order info db
+
     $order_id = $stmt->insert_id;
 
-    echo $order_id;
+    //3    get product from cart (frim sessinon)
 
-
-
-
-
-    //get product from cart (frim sessinon)
-
-
-
-    // issue new order and store order info db
-
-
+    $_SESSION['cart'];//key value(array)
+    foreach($_SESSION['cart'] as $key => $value){
+        $product = $_SESSION['cart'][$key]; 
+        $product_id = $product ['product_id'];
+        $product_name = $product['product_name'];
+        $product_image = $product['product_image'];
+        $product_price = $product['product_price'];
+        $product_quantity = $product['product_quantity'];
     //store each single item in order_item db
 
-    //remove everthing from cart
+        $stmt1 = $conn->prepare("INSERT INTO order_items (order_id,product_id,product_name,product_image,product_price,product_quantity,user_id,order_date) VALUES (?,?,?,?,?,?,?,?)");
+
+        $stmt1->bind_param('iissiiis',$order_id,$product_id,$product_name,$product_image,$product_price,$product_quantity,$user_id,$order_date);
+
+        $stmt1->execute();
 
 
-    // inform user whether everything is fine or there is a problem and take them to pay
+    }
+
+
+
+    //remove everthing from cart -> delay u ntil payment
+    //unset($_SESSION['cart']);
+
+
+    // inform user whether everything is fine or there is a problem and take them to payment
+        header('location: ../payment.php?order_status=order place succesfully');
 
 
 }
