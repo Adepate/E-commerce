@@ -464,13 +464,14 @@ th:last-child{
 }
 
 .orders th{
-    text-align: left;
+    /*text-align: left;*/
     padding: 5px 20px;
-    color: #fb774b;
+    background-color: #fb774b;
+    color: white;
 }
 
 .orders th:nth-child(2){
-    text-align: right;
+   /* text-align: right;*/
 }
 .orders td{
     padding: 10px 20px;
@@ -479,6 +480,11 @@ th:last-child{
     width: 80px;
     height: 80px;
     margin-right: 10px;
+}
+
+.orders .details-btn{
+    color: #fff;
+    background-color: #fb774b;
 }
 
 

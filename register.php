@@ -49,10 +49,12 @@ if(isset($_POST['register'])){
 
             //if account creation successful
             if($stmt->execute()){
+                $user_id = $stmt->insert_id;
+                $_SESSION['user_id'] = $user_id;
                 $_SESSION['user_email'] = $email;
                 $_SESSION['user_name'] = $name;
                 $_SESSION['logged_in'] = true;
-                header('location: account.php?register=Registration Successful');
+                header('location: account.php?register_success=Registration Successful');
                 //account count not be created
             }else{
                 header('location: register.php?error=could not create an account at the moment');
