@@ -174,7 +174,7 @@ color: coral;
     text-align: end;
 }
 
-/* product*/
+/* product...............................................*/
 .product{
     cursor: pointer;
     margin-bottom: 2rem;
@@ -190,6 +190,15 @@ opacity: 0.7;
     transform: translateY(50px);
     opacity: 0;
     transition: 0.3s all;
+    color: white;
+}
+
+ .shop-btn{
+    background-color: #fb774b;
+    transform: translateY(50px);
+    opacity: 0;;
+    transition: 0.3s all;
+    
 }
 .product:hover .buy-btn{
     transform: translateY(0px);
@@ -451,6 +460,22 @@ th:last-child{
 .account-info #orders-btn,#logout-btn{
     color: #fb774b;
     text-decoration: none;
+}
+
+
+/*    shop page*/
+.product img{
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    object-fit: cover;
+}
+.pagination a{
+    color: coral;
+}
+.pagination li:hover a{
+    color: white;
+    background-color: coral;
 }
 
 /*orders*/
